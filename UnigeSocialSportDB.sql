@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS public.eventi
     "[sport]_categoria" character varying COLLATE pg_catalog."default" NOT NULL,
     id character varying COLLATE pg_catalog."default" NOT NULL,
     "[impianti]_id" character varying COLLATE pg_catalog."default" NOT NULL,
-    "[utenti]_username" character varying COLLATE pg_catalog."default",
+    "[utenti]_username" character varying COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT id_pkey PRIMARY KEY (id)
 );
 
@@ -45,6 +45,15 @@ e appartiene a una delle categorie tra quelle gestite dalla piattaforma.
 Ogni evento sportivo si svolge all’interno di un impianto del CUS Genova. 
 
 Gli utenti semplici non possono organizzare eventi sportivi. ';
+
+COMMENT ON COLUMN public.eventi.e_aperto
+    IS 'Lo stato di un evento puo'' essere	(APERTO/CHIUSO)';
+
+COMMENT ON COLUMN public.eventi.id
+    IS 'Identificativo univoco di un evento';
+
+COMMENT ON COLUMN public.eventi."[impianti]_id"
+    IS 'Ogni evento sportivo si svolge all’interno di	un impianto del	CUS Genova.';
 
 COMMENT ON COLUMN public.eventi."[utenti]_username"
     IS 'Un utente premium può̀ organizzare un evento sportivo';
@@ -220,6 +229,11 @@ COMMENT ON TABLE public.utenti
     IS 'Rappresenta uno studente nella sua relazione rispetto all''applicazione UnigeSocialSport
 
 Gli utenti possono appartenere a due tipologie: utenti premium o utenti semplici. Ogni utente della piattaforma ricade in una delle due tipologie sopra indicate.';
+
+COMMENT ON COLUMN public.utenti.e_premium
+    IS 'Gli utenti possono appartenere a due tipologie: 1. utenti premium
+2. utenti semplici.	
+Ogni utente della piattaforma	ricade in una delle	due	tipologie sopra indicate.';
 
 ALTER TABLE IF EXISTS public.esiti_eventi
     ADD CONSTRAINT "esiti_eventi_[eventi]_id_fkey" FOREIGN KEY ("[eventi]_id")
