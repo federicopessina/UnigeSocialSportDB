@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS public.sport
     categoria character varying COLLATE pg_catalog."default" NOT NULL,
     regolamento character varying COLLATE pg_catalog."default" NOT NULL,
     numero_di_giocatori numeric NOT NULL,
-    foto bytea,
+    foto bytea NOT NULL,
     CONSTRAINT sport_pkey PRIMARY KEY (categoria)
 );
 
@@ -172,20 +172,22 @@ CREATE TABLE IF NOT EXISTS public.status_eventi
 CREATE TABLE IF NOT EXISTS public.studenti
 (
     username character varying COLLATE pg_catalog."default" NOT NULL,
-    password character varying COLLATE pg_catalog."default",
-    nome character varying COLLATE pg_catalog."default",
-    cognome character varying COLLATE pg_catalog."default",
-    anno_di_nascita integer,
-    luogo_di_nascita character(1) COLLATE pg_catalog."default",
-    foto bytea,
-    telefono character varying COLLATE pg_catalog."default",
-    matricola character varying COLLATE pg_catalog."default",
-    "[corsi_di_studio]_nome" character varying COLLATE pg_catalog."default",
+    nome character varying COLLATE pg_catalog."default" NOT NULL,
+    cognome character varying COLLATE pg_catalog."default" NOT NULL,
+    anno_di_nascita integer NOT NULL,
+    luogo_di_nascita character(1) COLLATE pg_catalog."default" NOT NULL,
+    foto bytea NOT NULL,
+    telefono character varying COLLATE pg_catalog."default" NOT NULL,
+    matricola character varying COLLATE pg_catalog."default" NOT NULL,
+    "[corsi_di_studio]_nome" character varying COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT studenti_pkey PRIMARY KEY (username)
 );
 
 COMMENT ON TABLE public.studenti
     IS 'Ogni utente dispone di username (univoco) e password, nome, cognome, anno e luogo di nascita, foto, recapito telefonico, numero di matricola, e nome del Corso di Studi cui afferisce. ';
+
+COMMENT ON COLUMN public.studenti.telefono
+    IS 'Recapito telefonico dello studente';
 
 CREATE TABLE IF NOT EXISTS public.tornei
 (
@@ -210,11 +212,14 @@ CREATE TABLE IF NOT EXISTS public.utenti
 (
     "[studenti]_username" character varying COLLATE pg_catalog."default" NOT NULL,
     e_premium boolean NOT NULL DEFAULT false,
+    password character varying COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT utenti_pkey PRIMARY KEY ("[studenti]_username")
 );
 
 COMMENT ON TABLE public.utenti
-    IS 'Gli utenti possono appartenere a due tipologie: utenti premium o utenti semplici. Ogni utente della piattaforma ricade in una delle due tipologie sopra indicate.';
+    IS 'Rappresenta uno studente nella sua relazione rispetto all''applicazione UnigeSocialSport
+
+Gli utenti possono appartenere a due tipologie: utenti premium o utenti semplici. Ogni utente della piattaforma ricade in una delle due tipologie sopra indicate.';
 
 ALTER TABLE IF EXISTS public.esiti_eventi
     ADD CONSTRAINT "esiti_eventi_[eventi]_id_fkey" FOREIGN KEY ("[eventi]_id")
