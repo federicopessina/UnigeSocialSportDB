@@ -21,6 +21,15 @@ COMMENT ON COLUMN public.esiti_eventi."[eventi]_id"
     IS 'È prevista la possibilità̀ di memorizzare l’esito di un evento sportivo. L’esito è immesso dall’utente organizzatore dell’evento stesso e contiene: il numero di goal/punti della prima squadra, il numero di goal/punti della seconda squadra, 
 eventualmente il numero di goal/punti messi a segno da ciascun utente giocatore. ';
 
+CREATE TABLE IF NOT EXISTS public.esito_iscrizioni
+(
+    esito character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT esito_iscrizioni_pkey PRIMARY KEY (esito)
+);
+
+COMMENT ON TABLE public.esito_iscrizioni
+    IS 'I	giocatori	che	non	si	siano	presentati	ad	almeno	una partita per	cui	sono	registrati	tra le	ultime	20	(no	show),	o	che	abbiano	fatto	un	ritardo	nelle	ultime	10	partite,	o	che	abbiano	richiesto	una	sostituzione	nelle	ultime	10	partite	vengono	“indicati”	come	inaffidabili	(informazione	visibile	a	tutti	gli	utenti	premium).';
+
 CREATE TABLE IF NOT EXISTS public.eventi
 (
     data_di_svolgimento date NOT NULL,
@@ -48,6 +57,11 @@ Gli utenti semplici non possono organizzare eventi sportivi. ';
 
 COMMENT ON COLUMN public.eventi.e_aperto
     IS 'Lo stato di un evento puo'' essere	(APERTO/CHIUSO)';
+
+COMMENT ON COLUMN public.eventi.tempo_limite_disiscrizione
+    IS 'È	possibile	per	un	partecipante	confermato	disiscriversi	entro	un	 tempo	
+limite	 indicato	 dall’organizzatore,	 dopo	 tale	 limite	 potrà	 solo	 indicare	 un	 sostituto che 
+parteciperà	al	suo	posto.';
 
 COMMENT ON COLUMN public.eventi.id
     IS 'Identificativo univoco di un evento';
@@ -80,12 +94,9 @@ CREATE TABLE IF NOT EXISTS public.iscrizioni_eventi
     ruolo character varying COLLATE pg_catalog."default",
     stato character varying COLLATE pg_catalog."default",
     "[utenti]_username" character varying COLLATE pg_catalog."default" NOT NULL,
-    no_show boolean,
-    e_in_ritardo boolean,
-    e_sostituito boolean,
-    status character varying COLLATE pg_catalog."default",
-    "[status_eventi]_status" character varying COLLATE pg_catalog."default",
-    "[eventi]_id" character varying COLLATE pg_catalog."default" NOT NULL
+    "[stato_eventi]_stato" character varying COLLATE pg_catalog."default",
+    "[eventi]_id" character varying COLLATE pg_catalog."default" NOT NULL,
+    "[esito_iscrizioni]_esito" character varying COLLATE pg_catalog."default"
 );
 
 COMMENT ON TABLE public.iscrizioni_eventi
@@ -100,8 +111,11 @@ l’utente premium organizzatore dell’evento abbia approvato o meno la richies
 COMMENT ON COLUMN public.iscrizioni_eventi.ruolo
     IS 'Un utente può candidarsi a partecipare a una squadra in formazione (per un certo ruolo), con il meccanismo per gli eventi.';
 
-COMMENT ON COLUMN public.iscrizioni_eventi."[status_eventi]_status"
+COMMENT ON COLUMN public.iscrizioni_eventi."[stato_eventi]_stato"
     IS 'È associata a uno stato (CONFERMATO/RIFIUTATO), a seconda che l’utente premium organizzatore dell’evento abbia approvato o meno la richiesta di iscrizione.';
+
+COMMENT ON COLUMN public.iscrizioni_eventi."[esito_iscrizioni]_esito"
+    IS 'I	giocatori	che	non	si	siano	presentati	ad	almeno	una partita per	cui	sono	registrati	tra le	ultime	20	(no	show),	o	che	abbiano	fatto	un	ritardo	nelle	ultime	10	partite,	o	che	abbiano	richiesto	una	sostituzione	nelle	ultime	10	partite	vengono	“indicati”	come	inaffidabili	(informazione	visibile	a	tutti	gli	utenti	premium).';
 
 CREATE TABLE IF NOT EXISTS public.livelli
 (
@@ -129,7 +143,7 @@ CREATE TABLE IF NOT EXISTS public.sport
     categoria character varying COLLATE pg_catalog."default" NOT NULL,
     regolamento character varying COLLATE pg_catalog."default" NOT NULL,
     numero_di_giocatori numeric NOT NULL,
-    foto bytea NOT NULL,
+    foto bytea,
     CONSTRAINT sport_pkey PRIMARY KEY (categoria)
 );
 
@@ -172,11 +186,17 @@ o quando viene raggiunto il limite massimo di candidature accettate.
 L’utente organizzatore del torneo inserisce tutti gli eventi che lo compongono. Nel caso di tornei la squadra è formata inizialmente e non sono possibili sostituzioni di giocatori per singoli 
 eventi.';
 
-CREATE TABLE IF NOT EXISTS public.status_eventi
+CREATE TABLE IF NOT EXISTS public.stato_eventi
 (
-    status character varying COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT status_eventi_pkey PRIMARY KEY (status)
+    stato character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT status_eventi_pkey PRIMARY KEY (stato)
 );
+
+COMMENT ON TABLE public.stato_eventi
+    IS 'stato (CONFERMATO/RIFIUTATO)';
+
+COMMENT ON COLUMN public.stato_eventi.stato
+    IS 'stato (CONFERMATO/RIFIUTATO)';
 
 CREATE TABLE IF NOT EXISTS public.studenti
 (
@@ -274,8 +294,8 @@ COMMENT ON CONSTRAINT "eventi_[utenti]_username_fkey" ON public.eventi
 
 
 ALTER TABLE IF EXISTS public.iscrizioni_eventi
-    ADD CONSTRAINT "iscrizione_eventi_[status_eventi]_status_fkey" FOREIGN KEY ("[status_eventi]_status")
-    REFERENCES public.status_eventi (status) MATCH SIMPLE
+    ADD CONSTRAINT "iscrizione_eventi_[statuo_eventi]_stato_fkey" FOREIGN KEY ("[stato_eventi]_stato")
+    REFERENCES public.stato_eventi (stato) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
     NOT VALID;
