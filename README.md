@@ -75,4 +75,8 @@ PgAdmin > tasto destro sul database > ERD for Database > Save as ...
 
 PgAdmin > tasto destro sul database > ERD for Database > tasto Genera SQL 
 
+## Popolazione di esempio del Database
+
+Per valorizzare le tabelle del progetto con dei dati di esempio, runnare gli script presenti della cartella insert_base
+
 ## Importazione script
