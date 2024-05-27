@@ -204,7 +204,7 @@ CREATE TABLE IF NOT EXISTS public.studenti
     nome character varying COLLATE pg_catalog."default" NOT NULL,
     cognome character varying COLLATE pg_catalog."default" NOT NULL,
     anno_di_nascita integer NOT NULL,
-    luogo_di_nascita character(1) COLLATE pg_catalog."default" NOT NULL,
+    luogo_di_nascita character varying COLLATE pg_catalog."default" NOT NULL,
     foto bytea,
     telefono character varying COLLATE pg_catalog."default" NOT NULL,
     matricola character varying COLLATE pg_catalog."default" NOT NULL,
