@@ -67,7 +67,11 @@ ricevuti,	esito	partita,	affidabilità	voti,	...).
 I	giocatori	che	non	si	siano	presentati	ad	almeno	una partita per	cui	sono	registrati	tra le	ultime	20	(no	show),	o	che	abbiano	fatto	un	ritardo	nelle	ultime	10	partite,	o	che	abbiano	richiesto	una	sostituzione	nelle	ultime	10	partite	vengono	“indicati”	come	inaffidabili	(informazione	visibile	a	tutti	gli	utenti	premium).
 
 
-## Esportazione script
+## Esportazione ERD del databse
+
+PgAdmin > tasto destro sul database > ERD for Database > Save as ... 
+
+## Esportazione script creazione tabelle 
 
 PgAdmin > tasto destro sul database > ERD for Database > tasto Genera SQL 
 
