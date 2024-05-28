@@ -1,7 +1,7 @@
 
 Base di dati a supporto di una piattaforma social “UniGE Social Sport”  per studenti dell’Università di Genova:
 
-La piattaforma consente agli studenti di organizzare partite di sport di squadra (calcio, volley, basket, tennis, beach volley, beach soccer, cricket, TAG Rugby, Minigolf, etc.) presso le strutture del CUS Genova, di partecipare ad eventi sportivi, di interagire con altri utenti attraverso news e meccanismi di rating. La piattaforma gestisce gli eventi sportivi appartenenti a diverse categorie, tra cui ad esempio partite di sport di squadra, di diverse categorie1 .
+La piattaforma consente agli studenti di organizzare partite di sport di squadra (calcio, volley, basket, tennis, beach volley, beach soccer, cricket, TAG Rugby, Minigolf, etc.) presso le strutture del CUS Genova, di partecipare ad eventi sportivi, di interagire con altri utenti attraverso news e meccanismi di rating. La piattaforma gestisce gli eventi sportivi appartenenti a diverse categorie, tra cui ad esempio partite di sport di squadra, di diverse categorie .
 
 Categoria:
 
