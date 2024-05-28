@@ -294,7 +294,7 @@ COMMENT ON CONSTRAINT "eventi_[utenti]_username_fkey" ON public.eventi
 
 
 ALTER TABLE IF EXISTS public.iscrizioni_eventi
-    ADD CONSTRAINT "iscrizione_eventi_[statuo_eventi]_stato_fkey" FOREIGN KEY ("[stato_eventi]_stato")
+    ADD CONSTRAINT "iscrizione_eventi_[stato_eventi]_stato_fkey" FOREIGN KEY ("[stato_eventi]_stato")
     REFERENCES public.stato_eventi (stato) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
