@@ -56,4 +56,8 @@ Una squadra va registrata, specificando nome, colore maglia, numero partecipanti
  Livello:
  
 Ogni utente-giocatore è caratterizzato, relativamente a un certo sport, da un livello.
-Il livello è un punteggio che, da 0 a 100, indica il valore di un giocatore in relazione alle partite che ha disputato e i voti che ha ricevuto. Il calcolo è legato ad un algoritmo che, partendo da un livello medio pari a 60, lo modifica partita per partita in base a diversi parametri di riferimento (voti ricevuti, esito partita, affidabilità voti, ...). I giocatori che non si siano presentati ad almeno una partita per cui sono registrati tra le ultime 20 (no show), o che abbiano fatto un ritardo nelle ultime 10 partite, o che abbiano richiesto una sostituzione nelle ultime 10 partite vengono “indicati” come inaffidabili (informazione visibile a tutti gli utenti premium).
+Il livello è un punteggio che, da 0 a 100, indica il valore di un giocatore in relazione alle partite che ha disputato e i voti che ha ricevuto. Il calcolo è legato ad un algoritmo che, partendo da un livello medio pari a 60, lo modifica partita per partita in base a diversi parametri di riferimento (voti ricevuti, esito partita, affidabilità voti, ...).
+
+Affidabilità:
+
+I giocatori che non si siano presentati ad almeno una partita per cui sono registrati tra le ultime 20 (no show), o che abbiano fatto un ritardo nelle ultime 10 partite, o che abbiano richiesto una sostituzione nelle ultime 10 partite vengono “indicati” come inaffidabili (informazione visibile a tutti gli utenti premium).
