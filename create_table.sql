@@ -394,4 +394,32 @@ ALTER TABLE IF EXISTS public.utenti
 CREATE INDEX IF NOT EXISTS utenti_pkey
     ON public.utenti("[studenti]_username");
 
+
+ALTER TABLE IF EXISTS public.valutazione_prestazioni
+    ADD CONSTRAINT "[eventi]_id_fkey" FOREIGN KEY ("[eventi]_id")
+    REFERENCES public.eventi (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
+
+ALTER TABLE IF EXISTS public.valutazione_prestazioni
+    ADD CONSTRAINT "[utenti]_username_valutato_fkey" FOREIGN KEY ("[utenti]_username_valutato")
+    REFERENCES public.utenti ("[studenti]_username") MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+CREATE INDEX IF NOT EXISTS "fki_[utenti]_username_valutato_fkey"
+    ON public.valutazione_prestazioni("[utenti]_username_valutato");
+
+
+ALTER TABLE IF EXISTS public.valutazione_prestazioni
+    ADD CONSTRAINT "[utenti]_username_valutatore_fkey" FOREIGN KEY ("[utenti]_username_valutatore")
+    REFERENCES public.utenti ("[studenti]_username") MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+CREATE INDEX IF NOT EXISTS "fki_[utenti]_username_valutatore_fkey"
+    ON public.valutazione_prestazioni("[utenti]_username_valutatore");
+
 END;
