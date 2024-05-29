@@ -110,7 +110,6 @@ CREATE TABLE IF NOT EXISTS public.iscrizioni_eventi
 (
     data date NOT NULL DEFAULT CURRENT_DATE,
     ruolo character varying COLLATE pg_catalog."default",
-    stato character varying COLLATE pg_catalog."default",
     "[utenti]_username" character varying COLLATE pg_catalog."default" NOT NULL,
     "[stato_eventi]_stato" character varying COLLATE pg_catalog."default",
     "[eventi]_id" character varying COLLATE pg_catalog."default" NOT NULL,
