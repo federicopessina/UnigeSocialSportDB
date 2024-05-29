@@ -226,9 +226,9 @@ CREATE TABLE IF NOT EXISTS public.tornei
     restrizioni_partecipazione character varying[] COLLATE pg_catalog."default",
     "[utenti]_username" character varying COLLATE pg_catalog."default" NOT NULL,
     premi character varying[] COLLATE pg_catalog."default",
-    "[eventi]_id" character varying COLLATE pg_catalog."default",
+    "[eventi]_id" character varying COLLATE pg_catalog."default" NOT NULL,
     "[modalita]_descrizione" character varying COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT tornei_pkey PRIMARY KEY (id)
+    CONSTRAINT tornei_pkey PRIMARY KEY (id, "[eventi]_id")
 );
 
 COMMENT ON COLUMN public.tornei."[utenti]_username"
