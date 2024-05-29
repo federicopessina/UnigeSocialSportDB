@@ -5,8 +5,11 @@ BEGIN;
 
 CREATE TABLE IF NOT EXISTS public.componenti_squadre
 (
-)
-;
+    "[squadre]_nome" character varying COLLATE pg_catalog."default" NOT NULL,
+    "[utenti]_username" character varying COLLATE pg_catalog."default" NOT NULL,
+    e_accettato boolean NOT NULL DEFAULT false,
+    CONSTRAINT componenti_squadre_pkey PRIMARY KEY ("[squadre]_nome", "[utenti]_username")
+);
 
 COMMENT ON TABLE public.componenti_squadre
     IS 'L’utente	creatore	può	inserire	direttamente	
@@ -264,6 +267,26 @@ COMMENT ON COLUMN public.utenti.e_premium
     IS 'Gli utenti possono appartenere a due tipologie: 1. utenti premium
 2. utenti semplici.	
 Ogni utente della piattaforma	ricade in una delle	due	tipologie sopra indicate.';
+
+ALTER TABLE IF EXISTS public.componenti_squadre
+    ADD CONSTRAINT "[squadre]_nome_fkey" FOREIGN KEY ("[squadre]_nome")
+    REFERENCES public.squadre (nome) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+CREATE INDEX IF NOT EXISTS "fki_[squadre]_id_fkey"
+    ON public.componenti_squadre("[squadre]_nome");
+
+
+ALTER TABLE IF EXISTS public.componenti_squadre
+    ADD CONSTRAINT "[utenti]_username_fkey" FOREIGN KEY ("[utenti]_username")
+    REFERENCES public.utenti ("[studenti]_username") MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+CREATE INDEX IF NOT EXISTS fki_s
+    ON public.componenti_squadre("[utenti]_username");
+
 
 ALTER TABLE IF EXISTS public.esiti_eventi
     ADD CONSTRAINT "esiti_eventi_[eventi]_id_fkey" FOREIGN KEY ("[eventi]_id")
