@@ -60,8 +60,8 @@ CREATE TABLE IF NOT EXISTS public.eventi
     tempo_limite_iscrizione timestamp without time zone NOT NULL,
     "[sport]_categoria" character varying COLLATE pg_catalog."default" NOT NULL,
     id character varying COLLATE pg_catalog."default" NOT NULL,
-    "[impianti]_id" character varying COLLATE pg_catalog."default" NOT NULL,
     "[utenti]_username" character varying COLLATE pg_catalog."default" NOT NULL,
+    "[impianti]_nome" character varying COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT id_pkey PRIMARY KEY (id)
 );
 
@@ -87,9 +87,6 @@ parteciperà	al	suo	posto.';
 COMMENT ON COLUMN public.eventi.id
     IS 'Identificativo univoco di un evento';
 
-COMMENT ON COLUMN public.eventi."[impianti]_id"
-    IS 'Ogni evento sportivo si svolge all’interno di	un impianto del	CUS Genova.';
-
 COMMENT ON COLUMN public.eventi."[utenti]_username"
     IS 'Un utente premium può̀ organizzare un evento sportivo';
 
@@ -99,9 +96,9 @@ CREATE TABLE IF NOT EXISTS public.impianti
     telefono character varying COLLATE pg_catalog."default" NOT NULL,
     email character varying COLLATE pg_catalog."default" NOT NULL,
     nome character varying COLLATE pg_catalog."default" NOT NULL,
-    id character varying COLLATE pg_catalog."default" NOT NULL,
     coordinate numeric(9, 6)[] NOT NULL,
-    CONSTRAINT impianti_pkey PRIMARY KEY (id)
+    CONSTRAINT impianti_nome_pkey PRIMARY KEY (nome)
+        INCLUDE(nome)
 );
 
 COMMENT ON TABLE public.impianti
@@ -335,11 +332,13 @@ CREATE INDEX IF NOT EXISTS esiti_eventi_pkey
 
 
 ALTER TABLE IF EXISTS public.eventi
-    ADD CONSTRAINT "eventi_[impianti]_id_fkey" FOREIGN KEY ("[impianti]_id")
-    REFERENCES public.impianti (id) MATCH SIMPLE
+    ADD CONSTRAINT "eventi_[impianti]_nome_fkey" FOREIGN KEY ("[impianti]_nome")
+    REFERENCES public.impianti (nome) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
     NOT VALID;
+CREATE INDEX IF NOT EXISTS fki_i
+    ON public.eventi("[impianti]_nome");
 
 
 ALTER TABLE IF EXISTS public.eventi
