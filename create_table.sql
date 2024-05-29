@@ -158,9 +158,9 @@ CREATE TABLE IF NOT EXISTS public.squadre
     descrizione character varying COLLATE pg_catalog."default" NOT NULL,
     note character varying[] COLLATE pg_catalog."default",
     e_definitiva boolean NOT NULL DEFAULT false,
-    "[utenti]_username_organizzatore" character varying[] COLLATE pg_catalog."default",
     "[utenti]_username_partecipanti" character varying COLLATE pg_catalog."default",
     numero_partecipanti int4range NOT NULL,
+    "[utenti]_username_organizzatore" character varying COLLATE pg_catalog."default",
     CONSTRAINT squadre_pkey PRIMARY KEY (nome)
 );
 
