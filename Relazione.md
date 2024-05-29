@@ -34,7 +34,7 @@ Ogni utente –sia semplice che premium- che ha partecipato ad un evento può ev
  
  Ogni iscrizione fa riferimento a un evento sportivo, è effettuata in una certa data, può specificare un ruolo e, una volta esaminata, è associata a uno stato (CONFERMATO/RIFIUTATO), a seconda che l’utente premium organizzatore dell’evento abbia approvato o meno la richiesta di iscrizione. 
  
- 
+ Non confondere lo stato dell'evento con lo stato dell'iscrizione.
  
  
  Il numero totale di utenti giocatori CONFERMATI per un certo evento sportivo non può eccedere il numero di partecipanti previsti dalla categoria cui afferisce l’evento. Il numero totale di utenti arbitri CONFERMATI non può essere maggiore di 1 per un dato evento. Lo stato di un evento sportivo diventa CHIUSO quando si raggiunge un numero di giocatori pari a quello previsto dalla categoria (la presenza dell’arbitro è opzionale); in tal caso, non è più possibile effettuare iscrizioni all’evento. Se non viene raggiunto in tempo utile il minimo numero di giocatori necessario a disputare l’evento, questo viene cancellato e gli utenti iscritti vengono avvisati. È possibile per un partecipante confermato disiscriversi entro un tempo limite indicato dall’organizzatore, dopo tale limite potrà solo indicare un sostituto che parteciperà al suo posto.
