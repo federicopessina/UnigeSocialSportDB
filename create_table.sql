@@ -275,6 +275,7 @@ CREATE TABLE IF NOT EXISTS public.valutazione_prestazioni
     "[utenti]_username_valutato" character varying COLLATE pg_catalog."default" NOT NULL,
     valutazione numeric NOT NULL,
     commento character varying COLLATE pg_catalog."default",
+    data date NOT NULL,
     CONSTRAINT valutazione_prestazioni_pkey PRIMARY KEY ("[utenti]_username_valutatore", "[eventi]_id", "[utenti]_username_valutato")
 );
 
@@ -282,6 +283,9 @@ COMMENT ON TABLE public.valutazione_prestazioni
     IS 'Ogni	utente	–sia	semplice	che	premium- che	ha	partecipato	ad	un	evento	può	eventualmente	
 valutare	la	prestazione	degli	altri	utenti	giocatori;	la	valutazione	include	la	data,	un	punteggio	
 (da	0	a	10),	un	eventuale	commento.';
+
+COMMENT ON COLUMN public.valutazione_prestazioni.data
+    IS 'data della valutazione';
 
 ALTER TABLE IF EXISTS public.componenti_squadre
     ADD CONSTRAINT "[squadre]_nome_fkey" FOREIGN KEY ("[squadre]_nome")
