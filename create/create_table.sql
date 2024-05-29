@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS public.impianti
     email character varying COLLATE pg_catalog."default" NOT NULL,
     nome character varying COLLATE pg_catalog."default" NOT NULL,
     coordinate numeric(9, 6)[] NOT NULL,
-    CONSTRAINT impianti_nome_pkey PRIMARY KEY (nome)
+    CONSTRAINT impianti_pkey PRIMARY KEY (nome)
         INCLUDE(nome)
 );
 
@@ -292,7 +292,7 @@ COMMENT ON COLUMN public.valutazione_prestazioni.data
     IS 'data della valutazione';
 
 ALTER TABLE IF EXISTS public.affidabilita_utenti
-    ADD CONSTRAINT "[utenti]_username_fkey" FOREIGN KEY ("[utenti]_username")
+    ADD CONSTRAINT "affidabilita_utenti_[utenti]_username_fkey" FOREIGN KEY ("[utenti]_username")
     REFERENCES public.utenti ("[studenti]_username") MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
@@ -302,7 +302,7 @@ CREATE INDEX IF NOT EXISTS "fki_[utenti]_username_fkey"
 
 
 ALTER TABLE IF EXISTS public.componenti_squadre
-    ADD CONSTRAINT "[squadre]_nome_fkey" FOREIGN KEY ("[squadre]_nome")
+    ADD CONSTRAINT "componenti_squadre_[squadre]_nome_fkey" FOREIGN KEY ("[squadre]_nome")
     REFERENCES public.squadre (nome) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
@@ -312,7 +312,7 @@ CREATE INDEX IF NOT EXISTS "fki_[squadre]_id_fkey"
 
 
 ALTER TABLE IF EXISTS public.componenti_squadre
-    ADD CONSTRAINT "[utenti]_username_fkey" FOREIGN KEY ("[utenti]_username")
+    ADD CONSTRAINT "componenti_squadre_[utenti]_username_fkey" FOREIGN KEY ("[utenti]_username")
     REFERENCES public.utenti ("[studenti]_username") MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
@@ -416,7 +416,7 @@ CREATE INDEX IF NOT EXISTS utenti_pkey
 
 
 ALTER TABLE IF EXISTS public.valutazione_prestazioni
-    ADD CONSTRAINT "[eventi]_id_fkey" FOREIGN KEY ("[eventi]_id")
+    ADD CONSTRAINT "valutazione_prestazioni_[eventi]_id_fkey" FOREIGN KEY ("[eventi]_id")
     REFERENCES public.eventi (id) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
@@ -424,7 +424,7 @@ ALTER TABLE IF EXISTS public.valutazione_prestazioni
 
 
 ALTER TABLE IF EXISTS public.valutazione_prestazioni
-    ADD CONSTRAINT "[utenti]_username_valutato_fkey" FOREIGN KEY ("[utenti]_username_valutato")
+    ADD CONSTRAINT "valutazione_prestazioni_[utenti]_username_valutato_fkey" FOREIGN KEY ("[utenti]_username_valutato")
     REFERENCES public.utenti ("[studenti]_username") MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
@@ -434,7 +434,7 @@ CREATE INDEX IF NOT EXISTS "fki_[utenti]_username_valutato_fkey"
 
 
 ALTER TABLE IF EXISTS public.valutazione_prestazioni
-    ADD CONSTRAINT "[utenti]_username_valutatore_fkey" FOREIGN KEY ("[utenti]_username_valutatore")
+    ADD CONSTRAINT "valutazione_prestazioni_[utenti]_username_valutatore_fkey" FOREIGN KEY ("[utenti]_username_valutatore")
     REFERENCES public.utenti ("[studenti]_username") MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
