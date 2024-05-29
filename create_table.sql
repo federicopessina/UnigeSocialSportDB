@@ -3,6 +3,17 @@
 BEGIN;
 
 
+CREATE TABLE IF NOT EXISTS public.componenti_squadre
+(
+)
+;
+
+COMMENT ON TABLE public.componenti_squadre
+    IS 'L’utente	creatore	può	inserire	direttamente	
+gli	 utenti	 componenti	 o,	 alternativamente,	 un	 utente	 può	 candidarsi	 a	 partecipare	 a	 una	
+squadra	in	formazione	(per	un	certo	ruolo),	con	il	meccanismo	descritto	sopra	per	gli	eventi.	
+L’utente	premium	che	ha	registrato	la	squadra	accetta	o	rifiuta	la	candidatura.';
+
 CREATE TABLE IF NOT EXISTS public.corsi_di_studio
 (
     nome character varying COLLATE pg_catalog."default" NOT NULL,
@@ -158,7 +169,6 @@ CREATE TABLE IF NOT EXISTS public.squadre
     descrizione character varying COLLATE pg_catalog."default" NOT NULL,
     note character varying[] COLLATE pg_catalog."default",
     e_definitiva boolean NOT NULL DEFAULT false,
-    "[utenti]_username_partecipanti" character varying COLLATE pg_catalog."default",
     numero_partecipanti int4range NOT NULL,
     "[utenti]_username_organizzatore" character varying COLLATE pg_catalog."default",
     CONSTRAINT squadre_pkey PRIMARY KEY (nome)
