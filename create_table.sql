@@ -77,9 +77,9 @@ CREATE TABLE IF NOT EXISTS public.impianti
     via character varying COLLATE pg_catalog."default",
     telefono character varying COLLATE pg_catalog."default" NOT NULL,
     email character varying COLLATE pg_catalog."default" NOT NULL,
-    coordinate numeric(9, 6)[] NOT NULL,
     nome character varying COLLATE pg_catalog."default" NOT NULL,
     id character varying COLLATE pg_catalog."default" NOT NULL,
+    coordinate numeric(9, 6)[] NOT NULL,
     CONSTRAINT impianti_pkey PRIMARY KEY (id)
 );
 
