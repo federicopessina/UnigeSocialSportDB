@@ -268,6 +268,21 @@ COMMENT ON COLUMN public.utenti.e_premium
 2. utenti semplici.	
 Ogni utente della piattaforma	ricade in una delle	due	tipologie sopra indicate.';
 
+CREATE TABLE IF NOT EXISTS public.valutazione_prestazioni
+(
+    "[utenti]_username_valutatore" character varying COLLATE pg_catalog."default" NOT NULL,
+    "[eventi]_id" character varying COLLATE pg_catalog."default" NOT NULL,
+    "[utenti]_username_valutato" character varying COLLATE pg_catalog."default" NOT NULL,
+    valutazione numeric NOT NULL,
+    commento character varying COLLATE pg_catalog."default",
+    CONSTRAINT valutazione_prestazioni_pkey PRIMARY KEY ("[utenti]_username_valutatore", "[eventi]_id", "[utenti]_username_valutato")
+);
+
+COMMENT ON TABLE public.valutazione_prestazioni
+    IS 'Ogni	utente	–sia	semplice	che	premium- che	ha	partecipato	ad	un	evento	può	eventualmente	
+valutare	la	prestazione	degli	altri	utenti	giocatori;	la	valutazione	include	la	data,	un	punteggio	
+(da	0	a	10),	un	eventuale	commento.';
+
 ALTER TABLE IF EXISTS public.componenti_squadre
     ADD CONSTRAINT "[squadre]_nome_fkey" FOREIGN KEY ("[squadre]_nome")
     REFERENCES public.squadre (nome) MATCH SIMPLE
