@@ -3,6 +3,13 @@
 BEGIN;
 
 
+CREATE TABLE IF NOT EXISTS public.affidabilita_utenti
+(
+    "[utenti]_username" character varying COLLATE pg_catalog."default" NOT NULL,
+    e_affidabile boolean NOT NULL DEFAULT true,
+    CONSTRAINT affidabilita_utenti_pkey PRIMARY KEY ("[utenti]_username")
+);
+
 CREATE TABLE IF NOT EXISTS public.componenti_squadre
 (
     "[squadre]_nome" character varying COLLATE pg_catalog."default" NOT NULL,
@@ -286,6 +293,16 @@ valutare	la	prestazione	degli	altri	utenti	giocatori;	la	valutazione	include	la	
 
 COMMENT ON COLUMN public.valutazione_prestazioni.data
     IS 'data della valutazione';
+
+ALTER TABLE IF EXISTS public.affidabilita_utenti
+    ADD CONSTRAINT "[utenti]_username_fkey" FOREIGN KEY ("[utenti]_username")
+    REFERENCES public.utenti ("[studenti]_username") MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+CREATE INDEX IF NOT EXISTS "fki_[utenti]_username_fkey"
+    ON public.affidabilita_utenti("[utenti]_username");
+
 
 ALTER TABLE IF EXISTS public.componenti_squadre
     ADD CONSTRAINT "[squadre]_nome_fkey" FOREIGN KEY ("[squadre]_nome")
