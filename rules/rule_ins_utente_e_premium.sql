@@ -1,12 +1,14 @@
--- Rule: ins_utente_e_premium ON public.tornei
+-- Rule: rule_ins_utente_e_premium ON public.eventi
 
--- DROP Rule IF EXISTS ins_utente_e_premium ON public.tornei;
+-- DROP Rule IF EXISTS rule_ins_utente_e_premium ON public.eventi;
 
-CREATE OR REPLACE RULE ins_utente_e_premium AS
-    ON INSERT TO public.tornei
-    WHERE (NOT (EXISTS ( SELECT 1
+CREATE OR REPLACE RULE rule_ins_utente_e_premium AS
+    ON INSERT TO public.eventi
+    WHERE (( SELECT utenti.e_premium
            FROM utenti
-          WHERE (((utenti."[studenti]_username")::text = (new."[utenti]_username")::text) AND (utenti.e_premium = true)))))
-    DO INSTEAD NOTHING;
+          WHERE ((utenti."[studenti]_username")::text = (new."[utenti]_username")::text)
+          ORDER BY utenti."[studenti]_username"
+         LIMIT 1) = true)
+    DO NOTHING;
 
-COMMENT ON RULE ins_utente_e_premium ON public.tornei IS 'La piattaforma consente inoltre agli utenti	premium di organizzare tornei';
+COMMENT ON RULE rule_ins_utente_e_premium ON public.eventi IS 'Un utente premium può̀ organizzare un evento sportivo.Gli utenti semplici non possono organizzare eventi sportivi.';
