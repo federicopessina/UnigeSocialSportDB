@@ -32,15 +32,14 @@ CREATE TABLE IF NOT EXISTS public.corsi_di_studio
 
 CREATE TABLE IF NOT EXISTS public.esiti_eventi
 (
-    punti_prima_squadra integer NOT NULL,
-    punti_seconda_squadra integer NOT NULL,
+    punti integer NOT NULL DEFAULT 0,
+    "[squadre]_nome" character varying COLLATE pg_catalog."default" NOT NULL,
     "[eventi]_id" character varying COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT esiti_eventi_pkey PRIMARY KEY ("[eventi]_id")
+    CONSTRAINT esiti_eventi_pkey PRIMARY KEY ("[squadre]_nome", "[eventi]_id")
 );
 
-COMMENT ON COLUMN public.esiti_eventi."[eventi]_id"
-    IS 'È prevista la possibilità̀ di memorizzare l’esito di un evento sportivo. L’esito è immesso dall’utente organizzatore dell’evento stesso e contiene: il numero di goal/punti della prima squadra, il numero di goal/punti della seconda squadra, 
-eventualmente il numero di goal/punti messi a segno da ciascun utente giocatore. ';
+COMMENT ON COLUMN public.esiti_eventi.punti
+    IS 'Punti fatti da un certo utente ad un certo evento';
 
 CREATE TABLE IF NOT EXISTS public.esito_iscrizioni
 (
@@ -326,8 +325,18 @@ ALTER TABLE IF EXISTS public.esiti_eventi
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
     NOT VALID;
-CREATE INDEX IF NOT EXISTS esiti_eventi_pkey
+CREATE INDEX IF NOT EXISTS "fki_esiti_eventi_[eventi]_id_fkey"
     ON public.esiti_eventi("[eventi]_id");
+
+
+ALTER TABLE IF EXISTS public.esiti_eventi
+    ADD CONSTRAINT "esiti_eventi_[squadre]_nome_fkey" FOREIGN KEY ("[squadre]_nome")
+    REFERENCES public.squadre (nome) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+CREATE INDEX IF NOT EXISTS "fki_esiti_eventi_[squadre]_nome_fkey"
+    ON public.esiti_eventi("[squadre]_nome");
 
 
 ALTER TABLE IF EXISTS public.eventi
