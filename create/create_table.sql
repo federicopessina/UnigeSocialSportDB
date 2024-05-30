@@ -41,13 +41,13 @@ CREATE TABLE IF NOT EXISTS public.esiti_eventi
 COMMENT ON COLUMN public.esiti_eventi.punti
     IS 'Punti fatti da un certo utente ad un certo evento';
 
-CREATE TABLE IF NOT EXISTS public.esito_iscrizioni
+CREATE TABLE IF NOT EXISTS public.esiti_iscrizioni
 (
     esito character varying COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT esito_iscrizioni_pkey PRIMARY KEY (esito)
 );
 
-COMMENT ON TABLE public.esito_iscrizioni
+COMMENT ON TABLE public.esiti_iscrizioni
     IS 'I	giocatori	che	non	si	siano	presentati	ad	almeno	una partita per	cui	sono	registrati	tra le	ultime	20	(no	show),	o	che	abbiano	fatto	un	ritardo	nelle	ultime	10	partite,	o	che	abbiano	richiesto	una	sostituzione	nelle	ultime	10	partite	vengono	“indicati”	come	inaffidabili	(informazione	visibile	a	tutti	gli	utenti	premium).';
 
 CREATE TABLE IF NOT EXISTS public.eventi
