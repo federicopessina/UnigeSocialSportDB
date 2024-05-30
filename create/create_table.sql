@@ -41,6 +41,18 @@ CREATE TABLE IF NOT EXISTS public.esiti_eventi
 COMMENT ON COLUMN public.esiti_eventi.punti
     IS 'Punti fatti da un certo utente ad un certo evento';
 
+CREATE TABLE IF NOT EXISTS public.esiti_eventi_giocatore
+(
+    "[utenti]_username" character varying COLLATE pg_catalog."default" NOT NULL,
+    "[eventi]_id" character varying COLLATE pg_catalog."default" NOT NULL,
+    punti integer NOT NULL DEFAULT 0,
+    CONSTRAINT esiti_eventi_giocatore_pkey PRIMARY KEY ("[utenti]_username", "[eventi]_id")
+);
+
+COMMENT ON TABLE public.esiti_eventi_giocatore
+    IS 'Possibilita di registrare eventualmente	il	numero	di	
+goal/punti	messi	a	segno	da	ciascun	utente	giocatore';
+
 CREATE TABLE IF NOT EXISTS public.esiti_iscrizioni
 (
     esito character varying COLLATE pg_catalog."default" NOT NULL,
@@ -337,6 +349,23 @@ ALTER TABLE IF EXISTS public.esiti_eventi
     NOT VALID;
 CREATE INDEX IF NOT EXISTS "fki_esiti_eventi_[squadre]_nome_fkey"
     ON public.esiti_eventi("[squadre]_nome");
+
+
+ALTER TABLE IF EXISTS public.esiti_eventi_giocatore
+    ADD CONSTRAINT "esiti_eventi_giocatore_[eventi]_id_fkey" FOREIGN KEY ("[eventi]_id")
+    REFERENCES public.eventi (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+CREATE INDEX IF NOT EXISTS "fki_esiti_eventi_giocatore_[eventi]_id_fkey"
+    ON public.esiti_eventi_giocatore("[eventi]_id");
+
+
+ALTER TABLE IF EXISTS public.esiti_eventi_giocatore
+    ADD CONSTRAINT "esiti_eventi_giocatore_[utenti]_username_fkey" FOREIGN KEY ("[utenti]_username")
+    REFERENCES public.utenti ("[studenti]_username") MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION;
 
 
 ALTER TABLE IF EXISTS public.eventi
