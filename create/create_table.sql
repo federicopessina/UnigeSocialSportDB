@@ -67,8 +67,8 @@ CREATE TABLE IF NOT EXISTS public.eventi
     data_di_svolgimento date NOT NULL,
     e_aperto boolean NOT NULL DEFAULT true,
     numero_massimo_iscritti integer NOT NULL,
-    tempo_limite_disiscrizione timestamp without time zone NOT NULL,
-    tempo_limite_iscrizione timestamp without time zone NOT NULL,
+    data_limite_disiscrizione timestamp without time zone NOT NULL,
+    data_limite_iscrizione timestamp without time zone NOT NULL,
     "[sport]_categoria" character varying COLLATE pg_catalog."default" NOT NULL,
     id character varying COLLATE pg_catalog."default" NOT NULL,
     "[utenti]_username" character varying COLLATE pg_catalog."default" NOT NULL,
@@ -90,7 +90,7 @@ Gli utenti semplici non possono organizzare eventi sportivi. ';
 COMMENT ON COLUMN public.eventi.e_aperto
     IS 'Lo stato di un evento puo'' essere	(APERTO/CHIUSO)';
 
-COMMENT ON COLUMN public.eventi.tempo_limite_disiscrizione
+COMMENT ON COLUMN public.eventi.data_limite_disiscrizione
     IS 'È	possibile	per	un	partecipante	confermato	disiscriversi	entro	un	 tempo	
 limite	 indicato	 dall’organizzatore,	 dopo	 tale	 limite	 potrà	 solo	 indicare	 un	 sostituto che 
 parteciperà	al	suo	posto.';
