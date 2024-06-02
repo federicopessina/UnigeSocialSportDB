@@ -1,0 +1,4 @@
+domini degli attributi 
+[eventuali modifiche dei domini degli attributi e informazioni sui domini di eventuali attributi introdotti]
+
+Relativamente alla tabella impianti abbiamo utilizzato il seguente dominio per l'attributo coordinate :numeric(9, 6)[]
