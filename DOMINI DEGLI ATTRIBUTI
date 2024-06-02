@@ -19,6 +19,8 @@ tabella esiti_eventi:
 punti integer
 [squadre]_nome character varying
 [eventi]_id character varying
+
+
 tabella esiti_eventi_giocatore:
 [utenti]_username  character varying
 [eventi]_id  character varying
