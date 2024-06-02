@@ -1,4 +1,96 @@
 domini degli attributi 
-[eventuali modifiche dei domini degli attributi e informazioni sui domini di eventuali attributi introdotti]
+tabella affidabilita_utenti :
+[utenti]_username  character varying
+e_affidabile boolean
+tabella componenti_squadre:
+[squadre]_nome  character varying
+[utenti]_username  character varying
+e_accettato boolean
+tabella corsi_di_studio:
+nome character varying
+tabella esiti_eventi:
+punti integer
+[squadre]_nome character varying
+[eventi]_id character varying
+tabella esiti_eventi_giocatore:
+[utenti]_username  character varying
+[eventi]_id  character varying
+punti integer
+tabella esiti_iscrizioni:
+esito character varying
+tabella eventi:
+data_di_svolgimento date 
+e_aperto boolean
+numero_massimo_iscritti integer
+data_limite_disiscrizione timestamp 
+data_limite_iscrizione timestamp
+[sport]_categoria character varying
+id character varying
+[utenti]_username  character varying
+[impianti]_nome  character varying
+tabella impianti:
+via character varying 
+telefono character varying 
+email character varying 
+nome character varying 
+coordinate numeric(9, 6)[] 
+tabella iscrizioni_eventi:
+data date     
+ruolo character varying 
+[utenti]_username  character varying 
+[stato_eventi]_stato character varying
+[eventi]_id   character varying 
+[esito_iscrizioni]_esito  character varying 
+tabella livelli:
+[utenti]_username  character varying 
+[sport]_categoria character varying 
+livello numeric 
+tabella modalita:
+descrizione character varying
+tabella  sport:
+categoria character varying 
+regolamento character varying 
+numero_di_giocatori numeric 
+foto bytea
+tabella squadre:
+nome character varying 
+colore character varying 
+descrizione character varying 
+note character varying[] 
+e_definitiva boolean 
+numero_partecipanti int4range 
+[utenti]_username_organizzatore character varying 
+tabella stato_eventi:
+stato character varying
+tabella studenti:
+username character varying 
+nome character varying 
+cognome character varying 
+anno_di_nascita integer 
+luogo_di_nascita character varying 
+foto bytea,
+telefono character varying 
+matricola character varying 
+[corsi_di_studio]_nome character varying 
+tabella tornei:
+id integer NOT NULL,
+sponsor character varying[] 
+descrizione character varying 
+restrizioni_partecipazione character varying[] 
+[utenti]_username  character varying 
+premi character varying[] 
+[eventi]_id   character varying 
+[modalita]_descrizione  character varying 
+tabella utenti:
+[studenti]_username  character varying 
+e_premium boolean 
+password character varying 
+tabella valutazione_prestazioni:
+[utenti]_username_valutatore character varying 
+[eventi]_id character varying 
+[utenti]_username_valutato character varying 
+valutazione numeric 
+commento character varying 
+data date 
 
-Relativamente alla tabella impianti abbiamo utilizzato il seguente dominio per l'attributo coordinate :numeric(9, 6)[]
+
