@@ -118,6 +118,16 @@ tabella utenti:
 [studenti]_username  character varying 
 e_premium boolean 
 password character varying 
+nome VARCHAR(50)
+cognome VARCHAR(50)
+anno_nascita INT
+luogo_nascita VARCHAR(100)
+foto BYTEA
+recapito_telefonico VARCHAR(15)
+numero_matricola VARCHAR(20)
+corso_di_studi VARCHAR(100)
+
+
 
 
 tabella valutazione_prestazioni:
@@ -127,5 +137,6 @@ tabella valutazione_prestazioni:
 valutazione numeric 
 commento character varying 
 data date 
+
 
 
