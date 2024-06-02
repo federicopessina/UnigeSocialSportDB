@@ -138,4 +138,12 @@ valutazione numeric
 commento character varying 
 data date 
 
+tabella ruoli:
+id_ruolo INT
+nome_ruolo VARCHAR(50)
+
+
+tabella ruoli_utenti:
+id_utente INT
+id_ruolo INT
 
