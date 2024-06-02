@@ -1,0 +1,5 @@
+RISTRUTTURAZIONE GERARCHIE
+[discussione delle scelte fatte per eliminare le gerarchie di generalizzazione]
+
+
+La generalizzazione, che lega logicamente le due entità figlie Utente_premium e Utente_semplice all'entità genitore Utente, è stata eliminata attraverso l'accorpamento delle entità figlie in quella genitore .
