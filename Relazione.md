@@ -103,7 +103,7 @@ Lo stato di un evento sportivo diventa CHIUSO quando si raggiunge un numero di g
 Se si è raggiunto il numero massimo di utenti registrabili ad un evento allora non è più possibile effettuare iscrizioni all’evento. 
 
 Se non viene raggiunto in tempo utile il minimo numero di giocatori necessario a disputare l’evento, questo viene cancellato e gli utenti iscritti vengono avvisati.
-NOTA:gli utenti vengono avvisati tramite un servizio di avvisi per email;le quali vengono rintracciate nella tabella studenti.
+NOTA:gli utenti vengono avvisati tramite un servizio di avvisi attraverso messaggi.
 
 È possibile per un partecipante confermato disiscriversi entro un tempo limite indicato dall’organizzatore, dopo tale limite potrà solo indicare un sostituto che parteciperà al suo posto.
 
