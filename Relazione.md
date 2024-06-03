@@ -39,6 +39,12 @@ Gli utenti possono appartenere a due tipologie ed ogni utente ricade in una di q
 1. utenti premium : che può organizzare un evento sportivo.
 2. utenti semplici : che non possono organizzare eventi sportivi
 
+NOTA: abbiamo separato le informazioni anagrafiche sugli studenti e le informazioni relative agli utenti all'interno del nostro programma.
+      Abbiamo attuato questa logica per non appesantire eccessivamente le query.
+
+
+
+
 #### Eventi
 
 Ogni evento dispone di un 
@@ -48,6 +54,9 @@ Ogni evento dispone di un
 4. appartiene a una delle categorie tra quelle gestite dalla piattaforma. 
 
 Ogni evento sportivo si svolge all’interno di un impianto del CUS Genova.
+
+Nota: la gestione degli inserimenti sulla tabella eventi è gestita dagli utenti con ruolo e_premium.
+
 
 #### Impianti
 
