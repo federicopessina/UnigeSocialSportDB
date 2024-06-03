@@ -18,6 +18,8 @@ Per ogni categoria (di sport), si vogliono memorizzare:
 1. il regolamento (campo di testo)
 2. il numero di giocatori
 3. una foto esplicativa. NOTA Abbiamo utilizzato il campo foto come opzionale
+NOTA: non specifichiamo se uno sport è di squadra o meno poichè abbiamo è esplicativa la colonna numero di giorcatori.
+
 
 #### Utente
 
