@@ -1,5 +1,5 @@
 INSERT INTO public.eventi (
-    data_di_svolgimento, e_aperto, numero_massimo_iscritti, tempo_limite_disiscrizione, tempo_limite_iscrizione, "[sport]_categoria", id, "[utenti]_username", "[impianti]_nome")
+    data_di_svolgimento, e_aperto, numero_massimo_iscritti, data_limite_disiscrizione, data_limite_iscrizione, "[sport]_categoria", id, "[utenti]_username", "[impianti]_nome")
 VALUES 
     ('2024-06-15', true, 50, '2024-06-10', '2024-06-13', 'calcio', 1, 'jdoe1', 'Stadio Luigi Ferraris'),
     ('2024-06-20', true, 40, '2024-06-15', '2024-06-18', 'volley', 2, 'asmith1', 'PalaDiamante'),
