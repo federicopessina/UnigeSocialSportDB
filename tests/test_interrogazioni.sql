@@ -1,5 +1,3 @@
--- test_interrogazioni.sql
--- Query test
 SELECT * FROM utenti WHERE e_premium = true;
 SELECT * FROM eventi WHERE data_di_svolgimento BETWEEN '2024-06-01' AND '2024-06-30';
 SELECT studenti.nome, studenti.cognome, eventi.data_di_svolgimento
