@@ -19,7 +19,7 @@ UNION
 
 select distinct "[utenti]_username"
 from Iscrizioni_eventi
-where "[utenti]_username" not in (select distinct "[utenti]_username"
+where ruolo='giocatore' and "[utenti]_username" not in (select distinct "[utenti]_username"
 	
 	                                                    from Iscrizioni_eventi
 	                                                      WHERE "[stato_eventi]_stato"='RIFIUTATO');
