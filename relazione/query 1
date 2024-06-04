@@ -26,5 +26,7 @@ where ruolo='giocatore' and "[utenti]_username" not in (select distinct "[utenti
 
 
 
-select distinct  "[utenti]_username"
+
+select *
 from vista
+INNER JOIN STUDENTI ON VISTA."[utenti]_username"=STUDENTI.USERNAME
