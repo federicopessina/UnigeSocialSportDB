@@ -4,7 +4,6 @@
 
 
 
-
 create view vista as
 
 select distinct "[utenti]_username"
@@ -28,4 +27,4 @@ where ruolo='giocatore' and "[utenti]_username" not in (select distinct "[utenti
 
 
 select distinct  "[utenti]_username"
-from vista 
+from vista
