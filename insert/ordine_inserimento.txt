@@ -1,0 +1,14 @@
+Livello 0
+
+ins_[utenti]
+ins_[impianti]
+ins_[modalita]
+ins_[corsi_di_studio]
+ins_[sport]
+
+Livello 1
+
+ins_[utenti]
+ins_[iscrizioni_eventi]
+
+Livello 2

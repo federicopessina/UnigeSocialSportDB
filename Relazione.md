@@ -106,8 +106,13 @@ NOTA Non confondere lo stato dell'evento con lo stato dell'iscrizione.
  
 #### Esito
 
-Inoltre, è prevista la possibilità di memorizzare l’esito di un evento sportivo. L’esito è immesso dall’utente organizzatore dell’evento stesso e contiene: il numero di goal/punti della prima squadra, il numero di goal/punti della seconda squadra, eventualmente il numero di goal/punti messi a segno da ciascun utente giocatore. 
- 
+Inoltre, è prevista la possibilità di memorizzare l’esito di un evento sportivo. 
+L’esito è immesso dall’utente organizzatore dell’evento stesso e contiene: 
+1. il numero di goal/punti della prima squadra, il numero di goal/punti della seconda squadra 
+NOTA nella nostra tabella dove salviamo i risultati la chiave primaria è rappresentata dall'evento e dalla squadra 
+2. eventualmente il numero di goal/punti messi a segno da ciascun utente giocatore. 
+NOTA abbiamo utilizzato una tabella a parte per salvare le prestazioni dei singoli giocatori
+
 #### Tornei
 
 I tornei hanno una descrizione, eventuali sponsor e premi, eventuali restrizioni per la partecipazione. I tornei consistono in un certo numero di eventi e sono organizzati in accordo a diverse modalità (eliminazione diretta, gironi all’italiana, mista).

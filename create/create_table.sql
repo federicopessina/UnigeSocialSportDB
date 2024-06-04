@@ -99,7 +99,7 @@ COMMENT ON COLUMN public.eventi.id
     IS 'Identificativo univoco di un evento';
 
 COMMENT ON COLUMN public.eventi."[utenti]_username"
-    IS 'Un utente premium può̀ organizzare un evento sportivo';
+    IS 'Un utente premium che può̀ organizzare un evento sportivo.';
 
 CREATE TABLE IF NOT EXISTS public.impianti
 (
@@ -307,7 +307,7 @@ ALTER TABLE IF EXISTS public.affidabilita_utenti
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
     NOT VALID;
-CREATE INDEX IF NOT EXISTS "fki_[utenti]_username_fkey"
+CREATE INDEX IF NOT EXISTS affidabilita_utenti_pkey
     ON public.affidabilita_utenti("[utenti]_username");
 
 

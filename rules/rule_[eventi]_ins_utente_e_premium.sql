@@ -2,7 +2,7 @@
 
 -- DROP Rule IF EXISTS rule_ins_utente_e_premium ON public.eventi;
 
-CREATE OR REPLACE RULE rule_ins_utente_e_premium AS
+CREATE OR REPLACE RULE rule_[eventi]_ins_utente_e_premium.sql AS
     ON INSERT TO public.eventi
     WHERE (( SELECT utenti.e_premium
            FROM utenti
