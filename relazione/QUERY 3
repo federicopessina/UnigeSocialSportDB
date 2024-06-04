@@ -1,5 +1,5 @@
 /* 3c: determinare per ogni categoria il corso di laurea pi attivo in tale categoria, cio quello i cui studenti hanno partecipato al maggior numero di eventi (singoli o allÕinterno di tornei) di tale categoria */
-CREATE TABLE tabe AS 
+CREATE VIEW tabe AS 
 
 select distinct sport.categoria,studenti."[corsi_di_studio]_nome",count(username) as valore
 	from sport inner join eventi on sport.categoria=eventi."[sport]_categoria"
@@ -9,7 +9,7 @@ where iscrizioni_eventi."[stato_eventi]_stato"='CONFERMATO' AND iscrizioni_event
 GROUP BY CATEGORIA, studenti."[corsi_di_studio]_nome"
 
 
-CREATE TABLE MASSI AS 
+CREATE VIEW MASSI AS 
 select MAX(VALORE) as mas,CATEGORIA
 from tabe
 GROUP BY CATEGORIA
