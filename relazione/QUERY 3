@@ -3,16 +3,17 @@ CREATE TABLE tabe AS
 
 select distinct sport.categoria,studenti."[corsi_di_studio]_nome",count(username) as valore
 	from sport inner join eventi on sport.categoria=eventi."[sport]_categoria"
-           inner join studenti on studenti.username=eventi."[utenti]_username"
-           inner join iscrizioni_eventi on iscrizioni_eventi."[eventi]_id"=eventi.id and  iscrizioni_eventi."[utenti]_username"=eventi."[utenti]_username"
+              inner join iscrizioni_eventi on iscrizioni_eventi."[eventi]_id"=eventi.id 
+	           inner join studenti on studenti.username=iscrizioni_eventi."[utenti]_username"
 where iscrizioni_eventi."[stato_eventi]_stato"='CONFERMATO' AND iscrizioni_eventi."[esito_iscrizioni]_esito"='PARTECIPA'
-GROUP BY CATEGORIA, studenti."[corsi_di_studio]_nome";
+GROUP BY CATEGORIA, studenti."[corsi_di_studio]_nome"
+
 
 CREATE TABLE MASSI AS 
 select MAX(VALORE) as mas,CATEGORIA
 from tabe
-GROUP BY CATEGORIA;
+GROUP BY CATEGORIA
 
 SELECT massi.CATEGORIA,"[corsi_di_studio]_nome"
 FROM tabe
-INNER JOIN  massi ON tabe.categoria=massi.categoria and tabe.valore=massi.mas;
+INNER JOIN  massi ON tabe .categoria=massi.categoria and tabe.valore=massi.mas
