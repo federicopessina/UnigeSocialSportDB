@@ -9,5 +9,7 @@ group by username
 having count( distinct categoria)=(select count(distinct categoria)
 from sport)
 
-select distinct progetto.username
+select *
 	from progetto	inner join STUDENTI ON progetto.username=STUDENTI.USERNAME
+
+
