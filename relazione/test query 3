@@ -3,7 +3,7 @@ INSERT INTO public.iscrizioni_eventi (
 VALUES 
      ('2024-06-15', 'arbitro', 'jdoe1', 'CONFERMATO', 1, 'PARTECIPA'),
      ('2024-06-20', 'giocatore', 'asmith1', 'CONFERMATO', 1, 'PARTECIPA'),
-     ('2024-06-15', 'giorcatore', 'jdoe1', 'CONFERMATO', 3, 'PARTECIPA'),
+     ('2024-06-15', 'giocatore', 'jdoe1', 'CONFERMATO', 3, 'PARTECIPA'),
      ('2024-06-15', 'arbitro', 'jdoe1', 'CONFERMATO', 9, 'PARTECIPA'),
      ('2024-06-20', 'giocatore', 'asmith1', 'CONFERMATO', 9, 'PARTECIPA'),
       ('2024-06-15', 'arbitro', 'jdoe1', 'CONFERMATO',11, 'PARTECIPA');
