@@ -1,0 +1,31 @@
+
+
+
+
+
+
+
+create view vista as
+
+select distinct "[utenti]_username"
+from Iscrizioni_eventi
+where ruolo='giocatore' and "[utenti]_username" not in (select distinct "[utenti]_username"
+	
+	                                                    from Iscrizioni_eventi
+	                                                     where ruolo='giocatore' and "[stato_eventi]_stato"='CONFERMATO')
+	
+UNION 
+
+
+select distinct "[utenti]_username"
+from Iscrizioni_eventi
+where "[utenti]_username" not in (select distinct "[utenti]_username"
+	
+	                                                    from Iscrizioni_eventi
+	                                                      WHERE "[stato_eventi]_stato"='RIFIUTATO');
+
+
+
+
+select distinct  "[utenti]_username"
+from vista 
