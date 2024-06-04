@@ -13,6 +13,6 @@ select MAX(VALORE) as mas,CATEGORIA
 from tabe
 GROUP BY CATEGORIA;
 
-SELECT CATEGORIA,"[corsi_di_studio]_nome"
+SELECT massi.CATEGORIA,"[corsi_di_studio]_nome"
 FROM tabe
 INNER JOIN  massi ON tabe.categoria=massi.categoria and tabe.valore=massi.mas;
