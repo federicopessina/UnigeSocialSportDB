@@ -1,3 +1,7 @@
+Vista Programma che per ogni impianto e mese riassume tornei e eventi che si svolgono in tale impianto, evidenziando in particolare per ogni categoria il numero di tornei, il numero di eventi, il numero di partecipanti coinvolti e di quanti diversi corsi di studio, la durata totale (in termini di minuti) di utilizzo e la percentuale di utilizzo rispetto alla disponibilit complessiva (minuti totali nel mese in cui lÕimpianto  utilizzabile) 
+
+
+
 create view vista as
 select  impianti.nome, date_part('month',data_di_svolgimento) as mese,eventi.id as eventi,sport.categoria,tornei.id  as tornei,studenti.username ,corsi_di_studio.nome as nomecorso
 
