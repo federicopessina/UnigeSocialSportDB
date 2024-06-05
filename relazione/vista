@@ -1,0 +1,28 @@
+create view vista as
+select  impianti.nome, date_part('month',data_di_svolgimento) as mese,eventi.id as eventi,sport.categoria,tornei.id  as tornei,studenti.username ,corsi_di_studio.nome as nomecorso
+
+
+from 
+     sport inner join eventi on sport.categoria=eventi."[sport]_categoria"
+	        inner join impianti on impianti.nome=eventi."[impianti]_nome"
+	      
+	       inner join tornei on eventi.id=tornei."[eventi]_id"
+	        inner join iscrizioni_eventi on iscrizioni_eventi."[eventi]_id"=eventi.id 
+	       inner  join studenti on studenti.username=iscrizioni_eventi."[utenti]_username"
+	       inner join corsi_di_studio on corsi_di_studio.nome=studenti."[corsi_di_studio]_nome"
+where iscrizioni_eventi."[esito_iscrizioni]_esito"='PARTECIPA'
+             ;
+
+
+
+
+create view programma as
+select distinct nome, mese,categoria,count(distinct tornei) as numerotornei,count(distinct eventi) as numeroeventi,count( distinct username) as numstudenti,count(distinct nomecorso) as numcorsi
+from vista
+group by nome, categoria,mese
+
+	
+select *
+from programma
+
+
