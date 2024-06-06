@@ -1,4 +1,4 @@
-INSERT INTO public.esito_iscrizioni (
+INSERT INTO public.esiti_iscrizioni (
     esito)
 VALUES 
     ('no show'),
