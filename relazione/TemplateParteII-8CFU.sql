@@ -689,6 +689,14 @@ VALUES
     ('2024-08-01', false, 50, '2024-07-25', '2024-07-28', 'volley', 11, 'jdoe1', 'Stadio Luigi Ferraris')
 
 
+-- ins_[stato_eventi].sql
+INSERT INTO public.stato_eventi (
+    stato)
+VALUES 
+    ('CONFERMATO'),
+    ('RIFIUTATO');
+
+
 -- Livello 1
 -- ins_[utenti].sql
 INSERT INTO public.utenti (
