@@ -594,13 +594,155 @@ END;
 
 /* inserire qui i comandi SQL per il popolamento 'in piccolo' di tale base di dati (utile per il test dei vincoli e delle operazioni in parte 2.) */
 
+-- Livello 0
+-- ins_[studenti].sql
+INSERT INTO public.studenti (
+    username, nome, cognome, anno_di_nascita, luogo_di_nascita, foto, telefono, matricola, "[corsi_di_studio]_nome")
+VALUES 
+    ('jdoe1', 'John', 'Doe', 2000, 'Genova', NULL, '0101111111', 'S001', 'Statistica'),
+    ('asmith1', 'Anna', 'Smith', 2001, 'Genova', NULL, '0102222222', 'S002', 'Matematica'),
+    ('bwhite1', 'Brian', 'White', 1999, 'Genova', NULL, '0103333333', 'S003', 'Fisica'),
+    ('clark1', 'Clara', 'Clark', 2002, 'Genova', NULL, '0104444444', 'S004', 'Informatica'),
+    ('ddavis1', 'David', 'Davis', 2000, 'Genova', NULL, '0105555555', 'S005', 'Statistica'),
+    ('emiller1', 'Eva', 'Miller', 2001, 'Genova', NULL, '0106666666', 'S006', 'Matematica'),
+    ('fthomas1', 'Frank', 'Thomas', 1998, 'Genova', NULL, '0107777777', 'S007', 'Fisica'),
+    ('gjones1', 'Grace', 'Jones', 2002, 'Genova', NULL, '0108888888', 'S008', 'Informatica'),
+    ('hlee1', 'Henry', 'Lee', 1999, 'Genova', NULL, '0109999999', 'S009', 'Statistica'),
+    ('ikim1', 'Ivy', 'Kim', 2000, 'Genova', NULL, '0100000000', 'S010', 'Matematica'),
+    ('jdoe2', 'Jack', 'Doe', 2001, 'Genova', NULL, '0111111111', 'S011', 'Fisica'),
+    ('asmith2', 'Alice', 'Smith', 2002, 'Genova', NULL, '0112222222', 'S012', 'Informatica'),
+    ('bwhite2', 'Bella', 'White', 1998, 'Genova', NULL, '0113333333', 'S013', 'Statistica'),
+    ('clark2', 'Carter', 'Clark', 2001, 'Genova', NULL, '0114444444', 'S014', 'Matematica'),
+    ('ddavis2', 'Diana', 'Davis', 1999, 'Genova', NULL, '0115555555', 'S015', 'Fisica'),
+    ('emiller2', 'Ethan', 'Miller', 2000, 'Genova', NULL, '0116666666', 'S016', 'Informatica'),
+    ('fthomas2', 'Fiona', 'Thomas', 2002, 'Genova', NULL, '0117777777', 'S017', 'Statistica'),
+    ('gjones2', 'Gina', 'Jones', 1998, 'Genova', NULL, '0118888888', 'S018', 'Matematica'),
+    ('hlee2', 'Hannah', 'Lee', 2001, 'Genova', NULL, '0119999999', 'S019', 'Fisica'),
+    ('ikim2', 'Ian', 'Kim', 1999, 'Genova', NULL, '0110000000', 'S020', 'Informatica'),
+    ('jdoe3', 'Jake', 'Doe', 2002, 'Genova', NULL, '0121111111', 'S021', 'Statistica'),
+    ('asmith3', 'Aaron', 'Smith', 2000, 'Genova', NULL, '0122222222', 'S022', 'Matematica'),
+    ('bwhite3', 'Blake', 'White', 2001, 'Genova', NULL, '0123333333', 'S023', 'Fisica'),
+    ('clark3', 'Catherine', 'Clark', 1998, 'Genova', NULL, '0124444444', 'S024', 'Informatica'),
+    ('ddavis3', 'Derek', 'Davis', 2000, 'Genova', NULL, '0125555555', 'S025', 'Statistica');
+
+-- ins_[impianti].sql
+INSERT INTO public.impianti (
+    via, telefono, email, coordinate, nome)
+VALUES 
+    ('Via V Maggio, 8', '0101234567', 'info@stadiolugi.com', ARRAY[44.404965, 8.944393]::numeric[], 'Stadio Luigi Ferraris'),
+    ('Corso De Stefanis, 62', '0107654321', 'contact@paladiamante.com', ARRAY[44.422625, 8.939473]::numeric[], 'PalaDiamante'),
+    ('Piazzale Atleti Azzurri d’Italia, 1', '0101122334', 'support@palacoge.com', ARRAY[44.439772, 8.956169]::numeric[], 'PalaCoge'),
+    ('Via Don Giovanni Verità, 7', '0102233445', 'info@stadioacquaticogenova.com', ARRAY[44.393399, 8.967992]::numeric[], 'Stadio Acquatico di Genova'),
+    ('Via delle Campanule, 19', '0103344556', 'admin@palafiumara.com', ARRAY[44.430692, 8.897282]::numeric[], 'PalaFiumara');
+
+
+-- ins_[modalita].sql
+INSERT INTO public.modalita (descrizione)
+VALUES 
+    ('eliminazione diretta'),
+    ('gironi all’italiana'),
+    ('mista');
+
+
+-- ins_[corsi_di_studio].sql
+INSERT INTO public.corsi_di_studio (nome)
+VALUES 
+    ('Statistica'),
+    ('Matematica'),
+    ('Fisica'),
+    ('Informatica'),
+    ('Biologia');
+
+
+-- ins_[sport].sql
+INSERT INTO public.sport (
+    categoria, regolamento, numero_di_giocatori, foto)
+VALUES 
+    ('calcio', 'Regolamento ufficiale FIFA', 11, NULL),
+    ('volley', 'Regolamento ufficiale FIVB', 6, NULL),
+    ('basket', 'Regolamento ufficiale FIBA', 5, NULL),
+    ('tennis', 'Regolamento ufficiale ITF', 2, NULL),
+    ('beach volley', 'Regolamento ufficiale FIVB', 2, NULL),
+    ('beach soccer', 'Regolamento ufficiale BSWW', 5, NULL),
+    ('cricket', 'Regolamento ufficiale ICC', 11, NULL),
+    ('TAG Rugby', 'Regolamento ufficiale IRB', 7, NULL),
+    ('Minigolf', 'Regolamento ufficiale WMF', 1, NULL);
+
+-- Livello 1
+-- ins_[utenti].sql
+INSERT INTO public.utenti (
+    "[studenti]_username", e_premium, password)
+VALUES 
+    ('jdoe1', true, 'password1'),
+    ('asmith1', false, 'password2'),
+    ('bwhite1', true, 'password3'),
+    ('clark1', false, 'password4'),
+    ('ddavis1', true, 'password5'),
+    ('emiller1', false, 'password6'),
+    ('fthomas1', true, 'password7'),
+    ('gjones1', false, 'password8'),
+    ('hlee1', true, 'password9'),
+    ('ikim1', false, 'password10'),
+    ('jdoe2', true, 'password11'),
+    ('asmith2', false, 'password12'),
+    ('bwhite2', true, 'password13'),
+    ('clark2', false, 'password14'),
+    ('ddavis2', true, 'password15'),
+    ('emiller2', false, 'password16'),
+    ('fthomas2', true, 'password17'),
+    ('gjones2', false, 'password18'),
+    ('hlee2', true, 'password19'),
+    ('ikim2', false, 'password20'),
+    ('jdoe3', true, 'password21'),
+    ('asmith3', false, 'password22'),
+    ('bwhite3', true, 'password23'),
+    ('clark3', false, 'password24'),
+    ('ddavis3', true, 'password25');
+
+-- ins_iscrizioni_eventi.sql
+INSERT INTO public.iscrizioni_eventi (
+    data, ruolo, "[utenti]_username", "[stato_eventi]_stato", "[eventi]_id", "[esito_iscrizioni]_esito")
+VALUES 
+    ('2024-06-15', 'arbitro', 'jdoe1', 'CONFERMATO', 1, 'da verificare'),
+    ('2024-06-20', 'giocatore', 'asmith1', 'RIFIUTATO', 2, 'no show'),
+    ('2024-06-25', 'arbitro', 'bwhite1', 'CONFERMATO', 3, 'ritardo'),
+    ('2024-07-01', 'giocatore', 'clark1', 'CONFERMATO', 4, 'sostituzione'),
+    ('2024-07-05', 'arbitro', 'ddavis1', 'RIFIUTATO', 5, 'da verificare');
+
 
 /*************************************************************************************************************************************************************************/ 
 --2. Vista
-Vista Programma che per ogni impianto e mese riassume tornei e eventi che si svolgono in tale impianto, evidenziando in particolare per ogni categoria il numero di tornei, il numero di eventi, il numero di partecipanti coinvolti e di quanti diversi corsi di studio, la durata totale (in termini di minuti) di utilizzo e la percentuale di utilizzo rispetto alla disponibilit� complessiva (minuti totali nel mese in cui l�impianto � utilizzabile) 
+-- Vista Programma che per ogni impianto e mese riassume tornei e eventi che si svolgono in tale impianto, evidenziando in particolare per ogni categoria il numero di tornei, il numero di eventi, il numero di partecipanti coinvolti e di quanti diversi corsi di studio, la durata totale (in termini di minuti) di utilizzo e la percentuale di utilizzo rispetto alla disponibilit� complessiva (minuti totali nel mese in cui l�impianto � utilizzabile) 
 /*************************************************************************************************************************************************************************/ 
 
 /* inserire qui i comandi SQL per la creazione della vista senza rimuovere la specifica nel commento precedente */ 
+
+create view vista as
+select  impianti.nome, date_part('month',data_di_svolgimento) as mese,eventi.id as eventi,sport.categoria,tornei.id  as tornei,studenti.username ,corsi_di_studio.nome as nomecorso
+
+
+from 
+     sport inner join eventi on sport.categoria=eventi."[sport]_categoria"
+	        inner join impianti on impianti.nome=eventi."[impianti]_nome"
+	      
+	       inner join tornei on eventi.id=tornei."[eventi]_id"
+	        inner join iscrizioni_eventi on iscrizioni_eventi."[eventi]_id"=eventi.id 
+	       inner  join studenti on studenti.username=iscrizioni_eventi."[utenti]_username"
+	       inner join corsi_di_studio on corsi_di_studio.nome=studenti."[corsi_di_studio]_nome"
+where iscrizioni_eventi."[esito_iscrizioni]_esito"='PARTECIPA'
+             ;
+
+
+
+
+create view programma as
+select distinct nome, mese,categoria,count(distinct tornei) as numerotornei,count(distinct eventi) as numeroeventi,count( distinct username) as numstudenti,count(distinct nomecorso) as numcorsi
+from vista
+group by nome, categoria,mese
+
+	
+select *
+from programma
 
 /*************************************************************************************************************************************************************************/ 
 --3. Interrogazioni
@@ -612,7 +754,6 @@ Vista Programma che per ogni impianto e mese riassume tornei e eventi che si svo
 
 
 /* inserire qui i comandi SQL per la creazione della query senza rimuovere la specifica nel commento precedente */ 
-
 
 create view vista as
 
