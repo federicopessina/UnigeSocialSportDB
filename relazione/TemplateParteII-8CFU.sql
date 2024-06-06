@@ -739,6 +739,23 @@ VALUES
     ('2024-07-05', 'arbitro', 'ddavis1', 'RIFIUTATO', 5, 'da verificare');
 
 
+-- Livello 2
+
+-- ins_[tornei].sql
+INSERT INTO public.tornei (
+    id, sponsor, descrizione, restrizioni_partecipazione, "[utenti]_username", premi, "[eventi]_id", "[modalita]_descrizione")
+VALUES 
+    (1, ARRAY['Sponsor A'], 'Torneo Descrizione 1', ARRAY['Over 18'], 'jdoe1', ARRAY['Coppa', 'Medaglie'], 1, 'eliminazione diretta'),
+    (1, ARRAY['Sponsor A'], 'Torneo Descrizione 2', ARRAY['Over 18'], 'jdoe1', ARRAY['Coppa', 'Medaglie'], 11, 'eliminazione diretta'),
+    
+    (2, ARRAY['Sponsor B'], 'Torneo Descrizione 2', ARRAY['Solo Membri'], 'bwhite1', ARRAY['Trofeo', 'Premio in denaro'], 3, 'gironi all’italiana'),
+    (2, ARRAY['Sponsor B'], 'Torneo Descrizione 3', ARRAY['Solo Membri'], 'bwhite1', ARRAY['Trofeo', 'Premio in denaro'], 5, 'gironi all’italiana'),
+    
+    (3, ARRAY['Sponsor C'], 'Torneo Descrizione 4, Beach Soccer e Cricket', ARRAY['Aperto a tutti'], 'fthomas1', ARRAY['Medaglie', 'Gadget'], 5, 'mista'),
+    (3, ARRAY['Sponsor C'], 'Torneo Descrizione 4, Beach Soccer e Cricket', ARRAY['Aperto a tutti'], 'fthomas1', ARRAY['Medaglie', 'Gadget'], 9, 'mista'),
+    (3, ARRAY['Sponsor C'], 'Torneo Descrizione 5, Beach Soccer e Cricket', ARRAY['Aperto a tutti'], 'fthomas1', ARRAY['Medaglie', 'Gadget'], 7, 'mista');
+
+
 /*************************************************************************************************************************************************************************/ 
 --2. Vista
 -- Vista Programma che per ogni impianto e mese riassume tornei e eventi che si svolgono in tale impianto, evidenziando in particolare per ogni categoria il numero di tornei, il numero di eventi, il numero di partecipanti coinvolti e di quanti diversi corsi di studio, la durata totale (in termini di minuti) di utilizzo e la percentuale di utilizzo rispetto alla disponibilit� complessiva (minuti totali nel mese in cui l�impianto � utilizzabile) 

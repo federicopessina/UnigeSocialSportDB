@@ -15,3 +15,5 @@ ins_[utenti].sql
 ins_[iscrizioni_eventi].sql
 
 Livello 2
+
+ins_[tornei].sql
