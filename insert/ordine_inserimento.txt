@@ -6,6 +6,7 @@ ins_[modalita].sql
 ins_[corsi_di_studio].sql
 ins_[sport].sql
 ins_[esiti_iscrizioni].sql
+ins_[eventi].sql
 
 Livello 1
 

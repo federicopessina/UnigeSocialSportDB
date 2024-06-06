@@ -668,6 +668,27 @@ VALUES
     ('TAG Rugby', 'Regolamento ufficiale IRB', 7, NULL),
     ('Minigolf', 'Regolamento ufficiale WMF', 1, NULL);
 
+-- ins_[esiti_escrizioni].sql
+INSERT INTO public.esiti_iscrizioni (
+    esito)
+VALUES 
+    ('no show'),
+    ('ritardo'),
+    ('sostituzione'),
+    ('da verificare');
+
+--ins_[eventi].sql
+INSERT INTO public.eventi (
+    data_di_svolgimento, e_aperto, numero_massimo_iscritti, data_limite_disiscrizione, data_limite_iscrizione, "[sport]_categoria", id, "[utenti]_username", "[impianti]_nome")
+VALUES 
+    ('2024-06-15', true, 50, '2024-06-10', '2024-06-13', 'calcio', 1, 'jdoe1', 'Stadio Luigi Ferraris'),
+    ('2024-06-25', true, 30, '2024-06-20', '2024-06-23', 'basket', 3, 'bwhite1', 'PalaCoge'),
+    ('2024-07-05', true, 10, '2024-07-01', '2024-07-04', 'beach volley', 5, 'ddavis1', 'PalaFiumara'),
+    ('2024-07-15', true, 25, '2024-07-10', '2024-07-13', 'cricket', 7, 'fthomas1', 'PalaDiamante'),
+    ('2024-07-25', true, 8, '2024-07-20', '2024-07-23', 'Minigolf', 9, 'hlee1', 'Stadio Acquatico di Genova'),
+    ('2024-08-01', false, 50, '2024-07-25', '2024-07-28', 'volley', 11, 'jdoe1', 'Stadio Luigi Ferraris')
+
+
 -- Livello 1
 -- ins_[utenti].sql
 INSERT INTO public.utenti (
