@@ -406,6 +406,66 @@ ALTER TABLE IF EXISTS public.iscrizioni_eventi
     NOT VALID;
 
 
+ALTER TABLE IF EXISTS public.iscrizioni_eventi
+    ADD CONSTRAINT "iscrizioni_eventi_[esito_iscrizioni]_esito_fkey" FOREIGN KEY ("[esito_iscrizioni]_esito")
+    REFERENCES public.esiti_iscrizioni (esito) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+CREATE INDEX IF NOT EXISTS "fki_iscrizioni_eventi_[esito_iscrizioni]_esito_fkey"
+    ON public.iscrizioni_eventi("[esito_iscrizioni]_esito");
+
+
+ALTER TABLE IF EXISTS public.iscrizioni_eventi
+    ADD CONSTRAINT "iscrizioni_eventi_[eventi]_id_fkey" FOREIGN KEY ("[eventi]_id")
+    REFERENCES public.eventi (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+CREATE INDEX IF NOT EXISTS "fki_iscrizioni_eventi_[eventi]_id_fkey"
+    ON public.iscrizioni_eventi("[eventi]_id");
+
+
+ALTER TABLE IF EXISTS public.iscrizioni_eventi
+    ADD CONSTRAINT "iscrizioni_eventi_[utenti]_username_fkey" FOREIGN KEY ("[utenti]_username")
+    REFERENCES public.utenti ("[studenti]_username") MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+CREATE INDEX IF NOT EXISTS fki_u
+    ON public.iscrizioni_eventi("[utenti]_username");
+
+
+ALTER TABLE IF EXISTS public.livelli
+    ADD CONSTRAINT "livelli_[sport]_categoria_fkey" FOREIGN KEY ("[sport]_categoria")
+    REFERENCES public.sport (categoria) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+CREATE INDEX IF NOT EXISTS "fki_livelli_[sport]_categoria_fkey"
+    ON public.livelli("[sport]_categoria");
+
+
+ALTER TABLE IF EXISTS public.livelli
+    ADD CONSTRAINT "livelli_[utenti]_username_fkey" FOREIGN KEY ("[utenti]_username")
+    REFERENCES public.utenti ("[studenti]_username") MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+CREATE INDEX IF NOT EXISTS "fki_livelli_[utenti]_username_fkey"
+    ON public.livelli("[utenti]_username");
+
+
+ALTER TABLE IF EXISTS public.squadre
+    ADD CONSTRAINT "squadre_[utenti]_username_organizzatore_fkey" FOREIGN KEY ("[utenti]_username_organizzatore")
+    REFERENCES public.utenti ("[studenti]_username") MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+CREATE INDEX IF NOT EXISTS "fki_squadre_[utenti]_username_organizzatore_fkey"
+    ON public.squadre("[utenti]_username_organizzatore");
+
+
 ALTER TABLE IF EXISTS public.studenti
     ADD CONSTRAINT "studenti_[corsi_di_studio]_nome_fkey" FOREIGN KEY ("[corsi_di_studio]_nome")
     REFERENCES public.corsi_di_studio (nome) MATCH SIMPLE
@@ -415,13 +475,13 @@ ALTER TABLE IF EXISTS public.studenti
 
 
 ALTER TABLE IF EXISTS public.tornei
-    ADD CONSTRAINT "[eventi]_id_fkey" FOREIGN KEY ("[eventi]_id")
+    ADD CONSTRAINT "tornei_[eventi]_id_fkey" FOREIGN KEY ("[eventi]_id")
     REFERENCES public.eventi (id) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
     NOT VALID;
 
-COMMENT ON CONSTRAINT "[eventi]_id_fkey" ON public.tornei
+COMMENT ON CONSTRAINT "tornei_[eventi]_id_fkey" ON public.tornei
     IS 'Gli eventi registrati nei tornei devono essere inseriti nella tabella [eventi]';
 
 CREATE INDEX IF NOT EXISTS "fki_[eventi]_id_fkey"
@@ -429,17 +489,27 @@ CREATE INDEX IF NOT EXISTS "fki_[eventi]_id_fkey"
 
 
 ALTER TABLE IF EXISTS public.tornei
-    ADD CONSTRAINT "[modalita]_descrizione_fkey" FOREIGN KEY ("[modalita]_descrizione")
+    ADD CONSTRAINT "tornei_[modalita]_descrizione_fkey" FOREIGN KEY ("[modalita]_descrizione")
     REFERENCES public.modalita (descrizione) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
     NOT VALID;
 
-COMMENT ON CONSTRAINT "[modalita]_descrizione_fkey" ON public.tornei
+COMMENT ON CONSTRAINT "tornei_[modalita]_descrizione_fkey" ON public.tornei
     IS 'Le modalita'' dei tornei registrati devono essere inserite nella tabella [modalita]';
 
 CREATE INDEX IF NOT EXISTS "fki_[modalita]_descrizione_fkey"
     ON public.tornei("[modalita]_descrizione");
+
+
+ALTER TABLE IF EXISTS public.tornei
+    ADD CONSTRAINT "tornei_[utenti]_username_fkey" FOREIGN KEY ("[utenti]_username")
+    REFERENCES public.utenti ("[studenti]_username") MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+CREATE INDEX IF NOT EXISTS "fki_tornei_[utenti]_username_fkey"
+    ON public.tornei("[utenti]_username");
 
 
 ALTER TABLE IF EXISTS public.utenti
