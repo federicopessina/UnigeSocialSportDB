@@ -81,7 +81,7 @@ La registrazione di un utente ad una squadra può avvenire in uno dei seguenti m
 1. l’utente creatore può inserire direttamente gli utenti componenti la squadra 
 2. un utente può candidarsi a partecipare a una squadra in formazione (per un certo ruolo), con il meccanismo descritto sopra per gli eventi. 
 
-L’utente premium che ha registrato la squadra accetta o rifiuta la candidatura alal squadra stessa.
+L’utente premium che ha registrato la squadra accetta o rifiuta la candidatura alla squadra stessa.
 
 Il numero totale di utenti giocatori CONFERMATI per un certo evento sportivo non può eccedere il numero di partecipanti previsti dalla categoria cui afferisce l’evento. 
 
