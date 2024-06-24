@@ -104,7 +104,7 @@ La valutazione include
  
 NOTA Non confondere lo stato dell'evento con lo stato dell'iscrizione.
  
-#### Esito
+#### Esiti
 
 Inoltre, è prevista la possibilità di memorizzare l’esito di un evento sportivo. L’esito è immesso dall’utente organizzatore dell’evento stesso e contiene: il numero di goal/punti della prima squadra, il numero di goal/punti della seconda squadra, eventualmente il numero di goal/punti messi a segno da ciascun utente giocatore. 
  
