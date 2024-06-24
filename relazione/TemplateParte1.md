@@ -115,7 +115,7 @@ Nel caso di tornei a squadre, la piattaforma supporta la formazione delle squadr
 L’utente organizzatore del torneo inserisce tutti gli eventi che lo compongono.
 Nel caso di tornei la squadra è formata inizialmente e non sono possibili sostituzioni di giocatori per singoli eventi.
 
-#### Squadra
+#### Squadre
 
 Una squadra va registrata, specificando 
 1. nome
@@ -127,7 +127,7 @@ Una squadra va registrata, specificando
 
 La formazione della squadra risulta conclusa quando l’utente ne cambia lo stato in definitiva o quando viene raggiunto il limite massimo di candidature accettate. 
 
-#### Livello
+#### Livelli
 
 Ogni utente-giocatore è caratterizzato, relativamente a un certo sport, da un livello.
 Il livello è un punteggio che, da 0 a 100, indica il valore di un giocatore in relazione alle partite che ha disputato e i voti che ha ricevuto. 
@@ -142,7 +142,7 @@ Se uno dei giocatori verifica anche solo una delle seguenti caratteristiche:
 2. abbiano fatto un ritardo nelle ultime 10 partite
 3. abbiano richiesto una sostituzione nelle ultime 10 partite 
 allora vengono “indicati” come inaffidabil.
-L'informazione sull'infaffidabilità degli utenti è visibile a tutti gli utenti premium.
+L'informazione sull'inaffidabilità degli utenti è visibile a tutti gli utenti premium.
 
 ## 2. Progetto Concettuale 
 
