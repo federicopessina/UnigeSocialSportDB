@@ -18,8 +18,6 @@ Per ogni categoria (di sport), si vogliono memorizzare:
 1. il regolamento (campo di testo)
 2. il numero di giocatori
 3. una foto esplicativa. NOTA Abbiamo utilizzato il campo foto come opzionale
-NOTA: non specifichiamo se uno sport è di squadra o meno poichè abbiamo è esplicativa la colonna numero di giorcatori.
-
 
 #### Utente
 
@@ -39,12 +37,6 @@ Gli utenti possono appartenere a due tipologie ed ogni utente ricade in una di q
 1. utenti premium : che può organizzare un evento sportivo.
 2. utenti semplici : che non possono organizzare eventi sportivi
 
-NOTA: abbiamo separato le informazioni anagrafiche sugli studenti e le informazioni relative agli utenti all'interno del nostro programma.
-      Abbiamo attuato questa logica per non appesantire eccessivamente le query.
-
-
-
-
 #### Eventi
 
 Ogni evento dispone di un 
@@ -54,9 +46,6 @@ Ogni evento dispone di un
 4. appartiene a una delle categorie tra quelle gestite dalla piattaforma. 
 
 Ogni evento sportivo si svolge all’interno di un impianto del CUS Genova.
-
-Nota: la gestione degli inserimenti sulla tabella eventi è gestita dagli utenti con ruolo e_premium.
-
 
 #### Impianti
 
@@ -103,7 +92,6 @@ Lo stato di un evento sportivo diventa CHIUSO quando si raggiunge un numero di g
 Se si è raggiunto il numero massimo di utenti registrabili ad un evento allora non è più possibile effettuare iscrizioni all’evento. 
 
 Se non viene raggiunto in tempo utile il minimo numero di giocatori necessario a disputare l’evento, questo viene cancellato e gli utenti iscritti vengono avvisati.
-NOTA:gli utenti vengono avvisati tramite un servizio di avvisi attraverso messaggi.
 
 È possibile per un partecipante confermato disiscriversi entro un tempo limite indicato dall’organizzatore, dopo tale limite potrà solo indicare un sostituto che parteciperà al suo posto.
 
@@ -124,6 +112,8 @@ L’esito è immesso dall’utente organizzatore dell’evento stesso e contien
 NOTA nella nostra tabella dove salviamo i risultati la chiave primaria è rappresentata dall'evento e dalla squadra 
 2. eventualmente il numero di goal/punti messi a segno da ciascun utente giocatore. 
 NOTA abbiamo utilizzato una tabella a parte per salvare le prestazioni dei singoli giocatori
+
+L'esito è immesso dall'utente organizzatore dell'evento stesso
 
 #### Tornei
 
@@ -168,6 +158,8 @@ L'informazione sull'infaffidabilità degli utenti è visibile a tutti gli utenti
 ### Dizionario Dati
 
 ### Vincoli non esprimibili nel diagramma
+
+L’esito (di un evento) è immesso dall’utente organizzatore dell’evento stesso e contiene.
 
 ## 3. Progetto LOGico
 
