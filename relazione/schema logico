@@ -14,19 +14,19 @@ eventi(data_di_svolgimento,e_aperto,numero_massimo_iscritti,
 
 data_limite_disiscrizione , data_limite_iscrizione ,”[sport]_categoria”,id,”[utenti]_username”,”[impianti]_nome”) 
 
- Impianti(via,telefono,email,nome,coordinate) 
+ impianti(via,telefono,email,nome,coordinate) 
 
 iscrizioni_eventi(data,ruolo,“[utenti]_username”, “[stato_eventi]_stato”, 
 
 “[eventi]_id”, “[esito_iscrizioni]_esito”)   
 
- Livelli(“[utenti]_username”,“[sport]_categoria”,livello) 
+ livelli(“[utenti]_username”,“[sport]_categoria”,livello) 
 
- Modalita(descrizione) 
+ modalita(descrizione) 
 
- Sport(categoria,regolamento,numero_di_giocatori ,foto)  
+ sport(categoria,regolamento,numero_di_giocatori ,foto)  
 
-Squadre(nome,colore,descrizione,note ,e_definitiva,numero_partecipanti , 
+squadre(nome,colore,descrizione,note ,e_definitiva,numero_partecipanti , 
 
 “[utenti]_username_organizzatore”) 
 
@@ -38,6 +38,6 @@ stato_eventi(stato)
 
 “[utenti]_username”,premi ,”[eventi]_id“,”[modalita]_descrizione”)  
 
- Utenti(“[studenti]_username”,e_premium,password ) 
+ utenti(“[studenti]_username”,e_premium,password ) 
 
   valutazione_prestazioni(“[utenti]_username_valutatore”,”[eventi]_id”,”[utenti]_username_valutato”,valutazione,commento,data) 
