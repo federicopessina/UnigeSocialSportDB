@@ -1,7 +1,9 @@
---- Progetto BD 23-24 (12 CFU)
---- 52
---- Nomi e matricole componenti
-
+--- Progetto BD 23-24 (12CFU)
+--- Numero gruppo : 58
+--- Nomi e matricole componenti : 
+---     Moustapha Dabbous - S5111327
+---     Federico Pessina - S4190198
+---     Lavinia Melas - S6525147
 
 --- PARTE III 
 /* il file deve essere file SQL ... cio formato solo testo e apribili ed eseguibili in pgAdmin */
